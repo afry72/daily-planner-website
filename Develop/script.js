@@ -4,50 +4,99 @@
 $(document).ready(function () {
 
 
-  var hour9 = {
+  /*var hour9 = {
     element: $('#hour-9'),
     hour: 9 
-  }
+  };
 
   var hour10 = {
     element: $('#hour-10'),
     hour: 10 
-  }
+  };
 
   var hour11 = {
     element: $('#hour-11'),
     hour: 11 
-  }
+  };
 
   var hour12 = {
     element: $('#hour-12'),
     hour: 12 
-  }
+  };
 
   var hour1 = {
     element: $('#hour-1'),
     hour: 1 
-  }
+  };
 
   var hour2 = {
     element: $('#hour-2'),
     hour: 2 
-  }
+  };
 
   var hour3 = {
     element: $('#hour-3'),
     hour: 3 
-  }
+  };
 
   var hour4 = {
     element: $('#hour-4'),
     hour: 4 
-  }
+  };
 
   var hour5 = {
     element: $('#hour-5'),
     hour: 5 
-  }
+  }; */
+
+  var hourBlock = [
+    {
+      element: $('#hour-9'),
+      hour: 9 
+    },
+
+    {
+      element: $('#hour-10'),
+      hour: 10 
+    },
+
+    {
+      element: $('#hour-11'),
+      hour: 11
+    },
+
+    {
+      element: $('#hour-12'),
+      hour: 12
+    },
+
+    {
+      element: $('#hour-1'),
+      hour: 1
+    },
+
+    {
+      element: $('#hour-2'),
+      hour: 2 
+    },
+
+    {
+      element: $('#hour-3'),
+      hour: 3 
+    },
+
+    {
+      element: $('#hour-4'),
+      hour: 4 
+    },
+    
+    {
+      element: $('#hour-5'),
+      hour: 5 
+    },
+
+  ];
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -74,14 +123,38 @@ $(document).ready(function () {
   function colorSet() {
     var current = dayjs().format('h');
 
-    if (current < hour9) {
-      
+    /*if (current < hour9) {
+      $('#hour-9').removeClass('present');
+      $('#hour-9').addClass('future');
+    } else if (current > hour9) {
+      $('#hour-9').removeClass('present');
+      $('#hour-9').addClass('past');
+    } else {
+      console.log("current");
+    } */
+
+    //ADD FOR LOOP HERE
+    
+
+    if (current > hourBlock[0].hour) {
+      (hourBlock[0].element).removeClass('present');
+      (hourBlock[0].element).addClass('future');
+    } else if (current < hourBlock[0].hour) {
+      (hourBlock[0].element).removeClass('present');
+      (hourBlock[0].element).addClass('past');
     }
+
+
+
+
+
     //if current time less then
     //if current time more than
     //if current time less then
 
   }
+
+  colorSet()
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
