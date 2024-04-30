@@ -1,3 +1,4 @@
+//document.ready executes everything within when the page loads
 $(document).ready(function () {
 
   var hourBlock = [
@@ -52,7 +53,6 @@ $(document).ready(function () {
   $(".saveBtn").on("click",function() {
     var textinput = $(this).siblings(".description").val();
     var timeinput = $(this).parent().attr("id");
-    //save to local storage
     localStorage.setItem(timeinput, textinput);
 
   });
@@ -62,7 +62,7 @@ $(document).ready(function () {
   function colorSet() {
     var current = dayjs().hour();
 
-    //ADD FOR LOOP HERE
+   
     for (var i = 0; i < hourBlock.length; i++) {
       if (current < hourBlock[i].hour) {
         (hourBlock[i].element).removeClass('present');
@@ -78,6 +78,7 @@ $(document).ready(function () {
 
   };
 
+  setInterval(colorSet, 1000);
   colorSet();
 
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
