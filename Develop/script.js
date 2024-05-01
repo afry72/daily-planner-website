@@ -72,6 +72,10 @@ $(document).ready(function () {
         (hourBlock[i].element).removeClass('present');
         (hourBlock[i].element).addClass('past');
 
+      } else if (current = hourblock[i].hour) {
+        (hourBlock[i].element).removeClass('future');
+        (hourBlock[i].element).removeClass('past');
+        (hourBlock[i].element).addClass('present');
       };
       
     };
