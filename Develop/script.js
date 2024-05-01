@@ -73,7 +73,7 @@ $(document).ready(function () {
       } else if (current > hourBlock[i].hour) {
         (hourBlock[i].element).addClass('past');
 
-      } else if (current = hourblock[i].hour) {
+      } else if (current = hourBlock[i].hour) {
         (hourBlock[i].element).addClass('present');
       };
       
