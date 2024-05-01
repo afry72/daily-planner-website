@@ -1,6 +1,7 @@
 //document.ready executes everything within when the page loads
 $(document).ready(function () {
-
+  //i created this array to store the value of each hour block on the html and modify them accordingly
+  //each object contains its link to the dom element and an associated hour
   var hourBlock = [
     {
       element: $('#hour-9'),
@@ -49,7 +50,7 @@ $(document).ready(function () {
 
   ];
 
-
+  //created an event listener to keep track of which save button was used and store it into the local storage
   $(".saveBtn").on("click",function() {
     var textinput = $(this).siblings(".description").val();
     var timeinput = $(this).parent().attr("id");
@@ -59,22 +60,20 @@ $(document).ready(function () {
 
   console.log(dayjs().hour());
 
+  //created a color set function that will go through every hour block and change the color of the dom elements depending
+  //on if the value of the hour is greater then less then or equal too the current hour
   function colorSet() {
     var current = dayjs().hour();
 
    
     for (var i = 0; i < hourBlock.length; i++) {
       if (current < hourBlock[i].hour) {
-        (hourBlock[i].element).removeClass('present');
         (hourBlock[i].element).addClass('future');
 
       } else if (current > hourBlock[i].hour) {
-        (hourBlock[i].element).removeClass('present');
         (hourBlock[i].element).addClass('past');
 
       } else if (current = hourblock[i].hour) {
-        (hourBlock[i].element).removeClass('future');
-        (hourBlock[i].element).removeClass('past');
         (hourBlock[i].element).addClass('present');
       };
       
@@ -82,9 +81,11 @@ $(document).ready(function () {
 
   };
 
+  // calling the colorset function and setting its interval
   setInterval(colorSet, 1000);
   colorSet();
 
+  //since the amount of elements that could be manipulated was small i was able to hardcode every one of the elements
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
   $("#hour-10 .description").val(localStorage.getItem("hour-10"));
   $("#hour-11 .description").val(localStorage.getItem("hour-11"));
@@ -95,6 +96,7 @@ $(document).ready(function () {
   $("#hour-4 .description").val(localStorage.getItem("hour-4"));
   $("#hour-5 .description").val(localStorage.getItem("hour-5"));
 
+  //this is a simple dayjs function that just keeps an active clock on the top of the screen
   function headerTimer() {
     var currentTime = dayjs().format('YYYY-MM-DD h:mm A');
     $('#clock').text(currentTime);
